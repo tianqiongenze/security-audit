@@ -1,0 +1,35 @@
+[package]
+name = "security-audit"
+version = "1.0.0"
+edition = "2021"
+authors = ["student-rust"]
+description = "工业安全审计系统 - Industrial Security Audit System (DDD)"
+
+[lib]
+name = "security_audit"
+path = "src/lib.rs"
+
+[[bin]]
+name = "audit-cli"
+path = "src/bin/cli.rs"
+
+[[bin]]
+name = "audit-server"
+path = "src/bin/server.rs"
+
+[dependencies]
+actix-web = "4"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rusqlite = { version = "0.31", features = ["bundled"] }
+postgres = { version = "0.19", features = ["with-chrono-0_4"] }
+redis = "0.25"
+clap = { version = "4", features = ["derive"] }
+chrono = { version = "0.4", features = ["serde"] }
+thiserror = "1"
+uuid = { version = "1", features = ["v4"] }
+log = "0.4"
+env_logger = "0.11"
+
+[dev-dependencies]
+# no extra test deps needed; tests use the public API + in-memory sqlite.
